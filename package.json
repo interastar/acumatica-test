@@ -1,0 +1,21 @@
+{
+  "name": "acumatica-test",
+  "version": "1.0.0",
+  "description": "Sample Acumatica testing project using cypress",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/interastar/acumatica-test"
+  },
+  "dependencies": {
+    "cypress": "^3.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.0",
+    "eslint-plugin-cypress": "^2.7.0"
+  },
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Marco Villaseñor",
+  "license": "MIT"
+}
