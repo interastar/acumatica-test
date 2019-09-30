@@ -8,10 +8,35 @@
 // https://on.cypress.io/plugins-guide
 // ***********************************************************
 
+const sql = require('mssql')
+
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+}
+
+// Database task
+module.exports = (on, config) => {
+  on('task', {
+    resetDb (connectionString) {
+
+      return new Promise((resolve) => {
+        // tasks should not resolve with undefined
+        setTimeout(() => resolve(null), ms)
+
+        async (connectionString) => {
+          try {
+              await sql.connect(connectionString)
+              const result = await sql.query`select * from Address`
+              resolve(result)
+          } catch (err) {
+            resolve(err)
+          }
+        }
+      })
+    }
+  })
 }

@@ -1,0 +1,5 @@
+{
+  "username":"mvillasenor",
+  "password":"Int3r4st4r.",
+  "connectionString":"mssql://sa:p4ssw0rd.@localhost/Acumatica18R2"
+}
