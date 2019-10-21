@@ -1,24 +1,10 @@
 /// <reference types="Cypress" />
 
 function loadFixture() {
-  cy.fixture('login').as('credentials')
+  cy.fixture('credentials').as('credentials')
 }
 
-Cypress.Commands.add("login", (user, pw) => {
-  let username;
-  let password;
 
-  cy.fixture('login') // <-- fixture in a separate file, default-user.js
-    .then((defaultUser) => {
-      username = user || defaultUser.username;
-      password = pw || defaultUser.password;
-
-      cy.get('#txtUser').type(username);
-      cy.get('#txtPass').type(password);
-
-      cy.get('input[value="Sign In"]').click();
-    });
-});
 
 describe('Login test', function() {
   beforeEach(function () {
@@ -46,7 +32,7 @@ describe('Login test', function() {
 describe('Navigation', function() {
   before(function () {
 
-    cy.fixture('login').then((credentials)  => {
+    cy.fixture('credentials').then((credentials)  => {
       const {username, password} = credentials
 
       // cy.task('resetDb', this.credentials.connectionString)

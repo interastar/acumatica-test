@@ -23,3 +23,19 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("login", (user, pw) => {
+  let username;
+  let password;
+
+  cy.fixture('credentials') // <-- fixture in a separate file, credentials.js
+    .then((defaultUser) => {
+      username = user || defaultUser.username;
+      password = pw || defaultUser.password;
+
+      cy.get('#txtUser').type(username);
+      cy.get('#txtPass').type(password);
+
+      cy.get('input[value="Sign In"]').click();
+    });
+});
